@@ -1,0 +1,70 @@
+html{
+    box-sizing: border-box;
+
+}
+
+body{
+    background-image: url('images/groundback.jpg');
+
+    width: 100vw;
+    height: 100vh;
+}
+ul, li{
+    display: inline-block;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-size: 4vmin;
+}
+
+h1{
+    color: white;
+    font-size: 6vmin;
+    text-shadow: 2px 2px 100px black;
+
+}
+
+.front{
+    display:none;
+}
+
+.label{
+    font-size: 3vmin;
+    color: black;
+
+}
+
+
+
+.stats{
+    /*border: 1px solid black;*/
+    width: 19vw;
+    height: 79vh;
+    float: left;
+}
+
+.game{
+    margin-top: 5%;
+    width: 70vw;
+    height: 70vh;
+    /*border: 1px solid red;*/
+    float: right;
+}
+
+.navbar{
+    /*border: 1px solid blue;*/
+    width: 100vw;
+    height: 20vh;
+}
+
+.game img {
+    width: 17vmin;
+    opacity: 0.8;
+}
+
+
+
+#logo img{
+    width: 35vmin;
+}

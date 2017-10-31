@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="http://learning-fuze.github.io/memory_match/v0.1/script.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+    <title>Memory Match</title>
+
+</head>
+<body>
+        <nav class="navbar navbar-expand-md">
+            <div class='col-md-4 text-center' id="logo">
+                <img src="images/logo.png" alt="Clash of Royale">
+            </div>
+            <div class="col-md-8 text-center">
+                <h1>Clash of Royale</h1>
+                <ul>
+                    <li><a href="#">Setting</a></li>
+                    <li><a href="about.html">Description</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class ="container stats">
+            <div class="games-played">
+                <div class="label">Games Played</div>
+                <div class="value"></div>
+            </div>
+            <div class="attempts">
+                <div class="label">attempts</div>
+                <div class="value"></div>
+            </div>
+            <div class="accuracy">
+                <div class="label">Accuracy</div>
+                <div class="value"></div>
+            </div>
+            <button class="reset">Reset Game</button>
+        </div>
+
+        <div class="container game text">
+            <div class="row">
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card1.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backCard.gif">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card2.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backCard.gif" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card3.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backCard.gif" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card4.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backCard.gif" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card5.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backCard.gif" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card6.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backCard.gif" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card7.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backCard.gif" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card8.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backCard.gif" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card9.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backCard.gif" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card9.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backCard.gif" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card8.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backCard.gif" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card7.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backCard.gif" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card6.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backCard.gif" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card5.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backCard.gif" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card4.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backCard.gif" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card3.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backCard.gif" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card2.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backCard.gif" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card1.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backCard.gif" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</body>
+</html>
