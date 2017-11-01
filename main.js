@@ -4,30 +4,34 @@ $(document).ready(initializeApp);
 
 
 function initializeApp(){
-    $('.card').on('click', card_clicked);
+    $('.back').on('click', card_clicked);
+    $('.card').on('dragstart', function(event){
+        event.preventDefault();
+    });
 
 
 }
 
 var first_card_clicked = null;
 var second_card_clicked = null;
-var total_possible_matches = 2;
+var total_possible_matches = 9;
 var match_counter = 0;
 var bouncer = true;
 
 function card_clicked(){
+    console.log(this);
     if(bouncer === true) {
 
         bouncer = false;
-        $(this).find('.back').hide();
+        $(this).hide();
         if (first_card_clicked === null) {
             first_card_clicked = this;
             bouncer = true;
         } else {
             second_card_clicked = this;
 
-            var firstUrl = $(this).find('.front img').attr('src');
-            var secondUrl = $(first_card_clicked).find('.front img').attr('src');
+            var firstUrl = $(this).parent().find('.front img').attr('src');
+            var secondUrl = $(first_card_clicked).parent().find('.front img').attr('src');
 
             if (firstUrl === secondUrl) {
                 bouncer = true;
@@ -45,13 +49,11 @@ function card_clicked(){
                 }
             } else {
                 wait2sec();
-
                 function wait2sec() {
-
                     setTimeout(function () {
 
-                        $(first_card_clicked).find('.back').show();
-                        $(second_card_clicked).find('.back').show();
+                        $(first_card_clicked).show();
+                        $(second_card_clicked).show();
                         first_card_clicked = null;
                         second_card_clicked = null;
                         bouncer = true;
