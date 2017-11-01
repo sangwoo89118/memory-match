@@ -31,17 +31,23 @@ h1{
 
 }
 
+.card{
+    position:relative;
+}
+
+.back{
+    position: absolute;
+}
+
 .front{
-    display:none;
+    position: absolute;
 }
 
 .label{
     font-size: 3vmin;
 }
 
-.card{
 
-}
 
 .stats{
     /*border: 1px solid black;*/
