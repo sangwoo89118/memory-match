@@ -9,19 +9,25 @@ body{
     width: 100vw;
     height: 100vh;
 }
-ul, li{
+ul, li, a{
     display: inline-block;
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding: 0 3%;
     color: white;
-    font-size: 4vmin;
+    font-size: 3vmin;
+
+}
+
+ul li a:hover {
+    color: white;
+    text-decoration: none;
 }
 
 h1{
     color: white;
-    font-size: 6vmin;
-    text-shadow: 2px 2px 100px black;
+    font-size: 8vmin;
+    text-shadow: 2px 2px 100px #21f800;
 
 }
 
@@ -31,21 +37,21 @@ h1{
 
 .label{
     font-size: 3vmin;
+}
 
+.card{
 
 }
 
-
-
 .stats{
     /*border: 1px solid black;*/
-    width: 19vw;
-    height: 79vh;
+    width: 20vw;
+    height: 70vh;
     float: left;
 }
 
 .game{
-    margin-top: 2%;
+
     width: 70vw;
     height: 70vh;
     /*border: 1px solid red;*/
@@ -56,14 +62,14 @@ h1{
     /*border: 1px solid blue;*/
     width: 100vw;
     height: 20vh;
+    clear: both;
 }
 
 .game img {
     width: 17vmin;
-    opacity: 0.8;
+
+
 }
-
-
 
 #logo img{
     width: 35vmin;
