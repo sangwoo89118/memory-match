@@ -64,3 +64,33 @@ function card_clicked(){
         }
     }
 }
+
+
+function randomCard(){
+    var frontCards = [
+        'images/card1.png',
+        'images/card2.png',
+        'images/card3.png',
+        'images/card4.png',
+        'images/card5.png',
+        'images/card6.png',
+        'images/card7.png',
+        'images/card8.png',
+        'images/card9.png',
+        'images/card10.png',
+        'images/card11.png',
+        'images/card12.png',
+        'images/card13.png',
+        'images/card14.png',
+        'images/card15.png',
+        'images/card16.png',
+        'images/card17.png',
+        'images/card18.png',
+        'images/card19.png',
+    ];
+
+
+
+
+    var randomNum = Math.floor(Math.random() * )
+}
