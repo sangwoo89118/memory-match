@@ -39,8 +39,12 @@ h1{
     position: relative;
 }
 
-.front, .back{
-    position: absolute;
+/*.front, .back{*/
+    /*position: absolute;*/
+/*}*/
+
+.back{
+    display: none;
 }
 
 
