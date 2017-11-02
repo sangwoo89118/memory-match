@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+
+    <title>Memory Match</title>
+
+</head>
+<body>
+        <nav class="navbar">
+            <div class='col-md-4 col-xs-2 text-center' id="logo">
+                <img src="images/logo.png" alt="Clash of Royale">
+            </div>
+            <div class="col-md-5 col-xs-8 text-center">
+                <h1>Clash of Royale</h1>
+            </div>
+            <div class="col-md-3 col-xs-2 text-center links">
+                <ul>
+                    <li><a href="#">Setting</a></li>
+                    <li><a href="about.html">Description</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class ="container stats">
+            <div class="col-md-12 col-xs-12 games-played">
+                <div class="label">Games Played</div>
+                <div class="value"></div>
+            </div>
+            <div class="col-md-12 col-xs-12 attempts">
+                <div class="label">attempts</div>
+                <div class="value"></div>
+            </div>
+            <div class="col-md-12 col-xs-12 accuracy">
+                <div class="label">Accuracy</div>
+                <div class="value"></div>
+            </div>
+            <div class="col-md-12 col-xs-12">
+            <button class="reset">Reset Game</button>
+            </div>
+        </div>
+
+        <div class="container game text" id="game-area">
+            <div class="row row-1">
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        google
+                        <img src="images/card1.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backcardN.png">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card2.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backcardN.png" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card3.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backcardN.png" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card4.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backcardN.png" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card5.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backcardN.png" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card6.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backcardN.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="row row-2">
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card7.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backcardN.png" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card8.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backcardN.png" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card9.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backcardN.png" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card1.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backcardN.png" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card2.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backcardN.png" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card3.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backcardN.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="row row-3">
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card4.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backcardN.png" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card5.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backcardN.png" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card6.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backcardN.png" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card7.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backcardN.png" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card8.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backcardN.png" alt="">
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 card">
+                    <div class="front">
+                        <img src="images/card9.png">
+                    </div>
+                    <div class="back">
+                        <img src="images/backcardN.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</body>
+</html>
