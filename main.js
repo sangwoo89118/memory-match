@@ -88,7 +88,6 @@ var frontCards = [
     'images/card16.png',
     'images/card17.png',
     'images/card18.png'
-    // 'images/card19.png',
 ]
 
 
