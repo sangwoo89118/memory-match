@@ -30,22 +30,19 @@ h1{
     text-shadow: 2px 2px 100px #21f800;
 }
 
-
 .card{
     position: relative;
     width:16.6%;
     height:33.3%;
 }
 
+/*.back{*/
+    /*display:none;*/
+/*}*/
+
 .front, .back{
     position: absolute;
 }
-
-/*.back{*/
-    /*display: none;*/
-/*}*/
-
-
 
 .label, .value, .reset{
     font-size: 4vmin;

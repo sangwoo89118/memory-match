@@ -8,10 +8,7 @@ function initializeApp(){
     $('.card').on('dragstart', function(event){
         event.preventDefault();
     });
-
     moveCard();
-
-
 }
 
 var first_card_clicked = null;
@@ -21,9 +18,8 @@ var match_counter = 0;
 var bouncer = true;
 
 function card_clicked(){
-    console.log(this);
-    if(bouncer === true) {
 
+    if(bouncer === true) {
 
         bouncer = false;
         $(this).hide();
@@ -47,6 +43,11 @@ function card_clicked(){
                         color: 'white',
                         'font-size': '12vmin',
                     })
+
+                    var new_img = $('<img>',{
+                        src : 'images/backCard.gif'
+                    })
+                    $('#game-area').append(new_img);
                 } else {
                     return;
                 }
@@ -62,33 +63,20 @@ function card_clicked(){
                         bouncer = true;
                     }, 2000);
                 }
-
             }
         }
     }
 }
 
 
-var frontCards = [
-    'images/card1.png',
-    'images/card2.png',
-    'images/card3.png',
-    'images/card4.png',
-    'images/card5.png',
-    'images/card6.png',
-    'images/card7.png',
-    'images/card8.png',
-    'images/card9.png',
-    'images/card10.png',
-    'images/card11.png',
-    'images/card12.png',
-    'images/card13.png',
-    'images/card14.png',
-    'images/card15.png',
-    'images/card16.png',
-    'images/card17.png',
-    'images/card18.png'
-]
+var frontCards = ['images/card1.png','images/card2.png','images/card3.png','images/card4.png','images/card5.png',
+    'images/card6.png','images/card7.png','images/card8.png','images/card9.png','images/card10.png','images/card11.png',
+    'images/card12.png','images/card13.png','images/card14.png','images/card15.png','images/card16.png','images/card17.png',
+    'images/card18.png','images/card19.png','images/card20.png','images/card21.png','images/card22.png','images/card23.png',
+    'images/card24.png','images/card25.png','images/card26.png','images/card27.png','images/card28.png','images/card29.png',
+    'images/card31.png','images/card32.png','images/card33.png','images/card34.png','images/card35.png','images/card36.png',
+    'images/card37.png','images/card38.png','images/card39.png','images/card40.png','images/card41.png','images/card42.png',
+    'images/card43.png','images/card44.png'];
 
 
 function moveCard () {
@@ -98,7 +86,7 @@ function moveCard () {
     while(bouncerN){
         if(counterF < 9){
 
-            var randomNum = Math.floor(Math.random() * 17);
+            var randomNum = Math.floor(Math.random() * 44)+1;
             if(cardArr.indexOf(randomNum) === -1){
                 counterF++;
                 cardArr.push(randomNum);
@@ -128,19 +116,10 @@ function moveCard () {
     console.log(elementArr);
     console.log(elementArr.length);
 
-
     for(var i = 0, k =0; i <cardArr.length , k < elementArr.length; i++, k+=2){
-        $('#game-area :nth-child(' + elementArr[k] + ') .front img').attr('src', frontCards[cardArr[i]]);
-        $('#game-area :nth-child(' + elementArr[k+1] + ') .front img').attr('src', frontCards[cardArr[i]]);
-
-
+        $('#game-area :nth-child(' + elementArr[k] + ') .front img').attr('src', 'images/card'+cardArr[i]+'.png');
+        $('#game-area :nth-child(' + elementArr[k+1] + ') .front img').attr('src', 'images/card'+cardArr[i]+'.png');
     }
-
-
-
-
-
-
 }
 
 
