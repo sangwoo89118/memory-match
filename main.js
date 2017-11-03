@@ -10,13 +10,7 @@ function initializeApp(){
         event.preventDefault();
     });
 
-    $('.reset').on('click', function(){
-        games_played++;
-        reset_stats();
-        display_stats();
-        $('.back').show();
-        moveCard();
-    });
+    $('.reset').on('click', reset);
 
     moveCard();
 
@@ -40,7 +34,7 @@ function card_clicked() {
     if (bouncer === true) {
 
         bouncer = false;
-        $(this).toggleClass('flip');
+        $(this).hide();
         if (first_card_clicked === null) {
             first_card_clicked = this;
             bouncer = true;
@@ -52,11 +46,19 @@ function card_clicked() {
             var secondUrl = $(first_card_clicked).parent().find('.front img').attr('src');
 
             if (firstUrl === secondUrl) {
-                bouncer = true;
+                bouncer = false;
                 match_counter++;
                 matches++;
+                wait1sec();
+                function wait1sec(){
+                    setTimeout(function (){
+                $(first_card_clicked).parent().find('.front').toggleClass('hidden');
+                $(second_card_clicked).parent().find('.front').toggleClass('hidden');
                 first_card_clicked = null;
                 second_card_clicked = null;
+                bouncer = true;
+                    },2000)
+                }
                 if (match_counter === total_possible_matches) {
                     $('#winner').modal({backdrop: true});
                 } else {
@@ -68,12 +70,12 @@ function card_clicked() {
                 function wait2sec() {
                     setTimeout(function () {
 
-                        $(first_card_clicked).toggleClass('flip');
-                        $(second_card_clicked).toggleClass('flip');
+                        $(first_card_clicked).show();
+                        $(second_card_clicked).show();
                         first_card_clicked = null;
                         second_card_clicked = null;
                         bouncer = true;
-                    }, 2000);
+                    }, 1000);
                 }
             }
         }
@@ -94,6 +96,10 @@ var frontCards = ['images/card1.png','images/card2.png','images/card3.png','imag
 
 
 function moveCard () {
+
+
+
+
     var counterF = null;
     var cardArr =[];
     var bouncerN = true;
@@ -180,7 +186,25 @@ function reset_stats () {
     display_stats();
 }
 
+function reset (){
+    games_played++;
+    reset_stats();
+    display_stats();
+    $('.back').show();
+    moveCard();
+    $('#game-area .front').removeClass('hidden')
 
+
+
+
+}
+
+
+// for(var i = 1; i < 19; i++){
+//     if($('#game-area :nth-child(' + i + ').front').attr('class') === 'front hidden'){
+//         $('#game-area :nth-child(' + i + ').front').removeClass('hidden');
+//     }
+// }
 
 //
 // for(var w = 0; w < 12 ; w++) {
