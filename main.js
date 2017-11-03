@@ -4,11 +4,22 @@ $(document).ready(initializeApp);
 
 
 function initializeApp(){
+    $('#welcome').modal({backdrop: true});
     $('.back').on('click', card_clicked);
     $('.card').on('dragstart', function(event){
         event.preventDefault();
     });
+
+    $('.reset').on('click', function(){
+        games_played++;
+        reset_stats();
+        display_stats();
+        $('.back').show();
+        moveCard();
+    });
+
     moveCard();
+
 }
 
 var first_card_clicked = null;
@@ -17,17 +28,25 @@ var total_possible_matches = 9;
 var match_counter = 0;
 var bouncer = true;
 
-function card_clicked(){
+var matches = 0;
+var attempts = 0;
+var accuracy = 0;
+var games_played = 0;
 
-    if(bouncer === true) {
+
+
+function card_clicked() {
+
+    if (bouncer === true) {
 
         bouncer = false;
-        $(this).hide();
+        $(this).toggleClass('flip');
         if (first_card_clicked === null) {
             first_card_clicked = this;
             bouncer = true;
         } else {
             second_card_clicked = this;
+            attempts++;
 
             var firstUrl = $(this).parent().find('.front img').attr('src');
             var secondUrl = $(first_card_clicked).parent().find('.front img').attr('src');
@@ -35,29 +54,22 @@ function card_clicked(){
             if (firstUrl === secondUrl) {
                 bouncer = true;
                 match_counter++;
+                matches++;
                 first_card_clicked = null;
                 second_card_clicked = null;
                 if (match_counter === total_possible_matches) {
-                    $('#game-area').text('You Won');
-                    $('#game-area').css({
-                        color: 'white',
-                        'font-size': '12vmin',
-                    })
-
-                    var new_img = $('<img>',{
-                        src : 'images/backCard.gif'
-                    })
-                    $('#game-area').append(new_img);
+                    $('#winner').modal({backdrop: true});
                 } else {
                     return;
                 }
             } else {
                 wait2sec();
+
                 function wait2sec() {
                     setTimeout(function () {
 
-                        $(first_card_clicked).show();
-                        $(second_card_clicked).show();
+                        $(first_card_clicked).toggleClass('flip');
+                        $(second_card_clicked).toggleClass('flip');
                         first_card_clicked = null;
                         second_card_clicked = null;
                         bouncer = true;
@@ -66,8 +78,10 @@ function card_clicked(){
             }
         }
     }
-}
 
+    accuracy = Math.round((matches / attempts)*100);
+    display_stats();
+}
 
 var frontCards = ['images/card1.png','images/card2.png','images/card3.png','images/card4.png','images/card5.png',
     'images/card6.png','images/card7.png','images/card8.png','images/card9.png','images/card10.png','images/card11.png',
@@ -119,10 +133,63 @@ function moveCard () {
     for(var i = 0, k =0; i <cardArr.length , k < elementArr.length; i++, k+=2){
         $('#game-area :nth-child(' + elementArr[k] + ') .front img').attr('src', 'images/card'+cardArr[i]+'.png');
         $('#game-area :nth-child(' + elementArr[k+1] + ') .front img').attr('src', 'images/card'+cardArr[i]+'.png');
+
+        $('#game-area :nth-child(' + elementArr[k] + ') .front img').parent().parent().css({
+            left: -k+10 + '%',
+            top: -k+10 + '%',
+        })
+        $('#game-area :nth-child(' + elementArr[k+1] + ') .front img').parent().parent().css({
+            left: -k+10 + '%',
+            top: -k+10 + '%',
+        })
+
+        setTimeout(function(){
+            for(var i = 1; i < 19; i++) {
+                $('#game-area :nth-child(' + i + ') .front img').parent().parent().css({
+                    left: 0,
+                    top: 0,
+                })
+            }
+        }, 1500);
+
+
+        $('#game-area .back').hide();
+        setTimeout(function () {
+            $('#game-area .back').show();
+        }, 450);
     }
 }
 
 
+
+function display_stats () {
+    console.log(games_played);
+    $('.games-played > .value').text(games_played);
+    $('.attempts .value').text(attempts);
+
+    var percentage = accuracy + '%';
+    if(attempts !== 0) {
+        $('.accuracy .value').text(percentage);
+    }
+}
+
+function reset_stats () {
+    accuracy = 0;
+    matches = 0;
+    attempts = 0;
+    display_stats();
+}
+
+
+
+//
+// for(var w = 0; w < 12 ; w++) {
+//
+//     setTimeout(function () {
+//         $('#game-area .back').toggleClass('flip');
+//     }, 500);
+//     w;
+// }
 
 //
 // for(var k = 0; k < 8; k++) {

@@ -12,6 +12,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="main.js"></script>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC" rel="stylesheet">
 
 
     <title>Memory Match</title>
@@ -23,7 +24,7 @@
                 <img src="images/logo.png" alt="Clash of Royale">
             </div>
             <div class="col-md-5 col-xs-8 text-center">
-                <h1>Clash of Royale</h1>
+                <h1>Memory Match</h1>
             </div>
             <div class="col-md-3 col-xs-2 text-center links">
                 <ul>
@@ -33,21 +34,21 @@
             </div>
         </nav>
 
-        <div class ="container stats">
+        <div class ="container stats text-center">
             <div class="col-md-12 col-xs-12 games-played">
-                <div class="label">Games Played</div>
-                <div class="value"></div>
+                <div class="label text-center">Games Played</div>
+                <div class="value text-center"></div>
             </div>
             <div class="col-md-12 col-xs-12 attempts">
                 <div class="label">attempts</div>
-                <div class="value"></div>
+                <div class="value text-center"></div>
             </div>
             <div class="col-md-12 col-xs-12 accuracy">
-                <div class="label">Accuracy</div>
-                <div class="value"></div>
+                <div class="label text-center">Accuracy</div>
+                <div class="value text-center"></div>
             </div>
             <div class="col-md-12 col-xs-12">
-            <button class="reset">Reset Game</button>
+            <button class="reset text-center">Reset Game</button>
             </div>
         </div>
 
@@ -199,8 +200,38 @@
                         <img src="images/backcardN.png" alt="">
                     </div>
                 </div>
-
         </div>
+
+        <div class="container">
+            <div class="modal fade" id="winner" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body text-center">
+                            <img src="images/backCard.gif" alt="">
+                            <h1 style="color: #3072ff">WINNER</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <div class="modal fade" id="welcome" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body text-center">
+                            <img src="images/welcome.png" alt="">
+                            <h1>WELCOME</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
 
 </body>
 </html>

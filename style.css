@@ -7,7 +7,19 @@ body{
     -webkit-background-size: cover;
     width: 100vw;
     height: 100vh;
+    font-family: 'Bowlby One SC', cursive;
+    -webkit-text-stroke: 1px black;
+    color: white;
+    text-shadow:
+            3px 3px 0 #000,
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
+
 }
+
+
 
 ul, li, a{
     display: inline-block;
@@ -17,6 +29,15 @@ ul, li, a{
     color: white;
     font-size: 3vmin;
     text-shadow: 2px 2px 100px #21f800;
+    -webkit-text-stroke: 1px black;
+    color: white;
+    text-shadow:
+            3px 3px 0 #000,
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
+
 }
 
 ul li a:hover {
@@ -27,25 +48,35 @@ ul li a:hover {
 h1{
     color: white;
     font-size: 8vmin;
-    text-shadow: 2px 2px 100px #21f800;
+
+
+
 }
 
 .card{
     position: relative;
     width:16.6%;
     height:33.3%;
+    transition-duration: 1.5s;
+}
+
+.flip{
+    display: none;
 }
 
 /*.back{*/
-    /*display:none;*/
+    /*display: none;*/
 /*}*/
 
 .front, .back{
     position: absolute;
+
 }
 
 .label, .value, .reset{
     font-size: 4vmin;
+
+
 }
 
 .stats{
@@ -54,6 +85,7 @@ h1{
     height: 70vh;
     float: left;
     position: relative;
+    color: white;
 }
 
 .game{
@@ -84,8 +116,30 @@ h1{
 
 }
 
+.reset{
+    border-radius: 20px;
+    background-color: red;
+}
+
+.modal-content{
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+}
 
 
+/*.modal-body{*/
+    /*padding: 0;*/
+/*}*/
+
+.modal-body img{
+    height: 70vh;
+}
+
+/*.modal-backdrop*/
+/*{*/
+    /*opacity:0.5 */
+/*}*/
 
 
 
