@@ -2,18 +2,14 @@
 $(document).ready(initializeApp);
 
 
-
 function initializeApp(){
     $('#welcome').modal({backdrop: true});
     $('.back').on('click', card_clicked);
     $('.card').on('dragstart', function(event){
         event.preventDefault();
     });
-
     $('.reset').on('click', reset);
-
     moveCard();
-
 }
 
 var first_card_clicked = null;
@@ -46,9 +42,14 @@ function card_clicked() {
             var secondUrl = $(first_card_clicked).parent().find('.front img').attr('src');
 
             if (firstUrl === secondUrl) {
+
+
                 bouncer = false;
                 match_counter++;
                 matches++;
+
+                acc();
+                display_stats();
                 wait1sec();
                 function wait1sec(){
                     setTimeout(function (){
@@ -66,10 +67,10 @@ function card_clicked() {
                 }
             } else {
                 wait2sec();
+                acc();
 
                 function wait2sec() {
                     setTimeout(function () {
-
                         $(first_card_clicked).show();
                         $(second_card_clicked).show();
                         first_card_clicked = null;
@@ -80,26 +81,23 @@ function card_clicked() {
             }
         }
     }
-
-    accuracy = Math.round((matches / attempts)*100);
     display_stats();
+
 }
 
-var frontCards = ['images/card1.png','images/card2.png','images/card3.png','images/card4.png','images/card5.png',
-    'images/card6.png','images/card7.png','images/card8.png','images/card9.png','images/card10.png','images/card11.png',
-    'images/card12.png','images/card13.png','images/card14.png','images/card15.png','images/card16.png','images/card17.png',
-    'images/card18.png','images/card19.png','images/card20.png','images/card21.png','images/card22.png','images/card23.png',
-    'images/card24.png','images/card25.png','images/card26.png','images/card27.png','images/card28.png','images/card29.png',
-    'images/card31.png','images/card32.png','images/card33.png','images/card34.png','images/card35.png','images/card36.png',
-    'images/card37.png','images/card38.png','images/card39.png','images/card40.png','images/card41.png','images/card42.png',
-    'images/card43.png','images/card44.png'];
+
+function acc () {
+    accuracy = Math.round((matches / attempts)*100);
+    var percentage = accuracy + '%';
+    if(!isNaN(accuracy)) {
+        $('.accuracy .value').text(percentage);
+    }
+}
+
+
 
 
 function moveCard () {
-
-
-
-
     var counterF = null;
     var cardArr =[];
     var bouncerN = true;
@@ -116,7 +114,7 @@ function moveCard () {
         }
     }
     console.log(cardArr);
-    console.log(cardArr.length);
+
 
     var counterN = null;
     var elementArr =[];
@@ -134,7 +132,7 @@ function moveCard () {
         }
     }
     console.log(elementArr);
-    console.log(elementArr.length);
+
 
     for(var i = 0, k =0; i <cardArr.length , k < elementArr.length; i++, k+=2){
         $('#game-area :nth-child(' + elementArr[k] + ') .front img').attr('src', 'images/card'+cardArr[i]+'.png');
@@ -158,7 +156,6 @@ function moveCard () {
             }
         }, 1500);
 
-
         $('#game-area .back').hide();
         setTimeout(function () {
             $('#game-area .back').show();
@@ -167,36 +164,27 @@ function moveCard () {
 }
 
 
-
 function display_stats () {
     console.log(games_played);
     $('.games-played > .value').text(games_played);
     $('.attempts .value').text(attempts);
-
-    var percentage = accuracy + '%';
-    if(attempts !== 0) {
-        $('.accuracy .value').text(percentage);
-    }
+    acc();
 }
 
 function reset_stats () {
     accuracy = 0;
     matches = 0;
     attempts = 0;
+    $('.accuracy .value').text('');
     display_stats();
 }
 
 function reset (){
     games_played++;
     reset_stats();
-    display_stats();
     $('.back').show();
     moveCard();
     $('#game-area .front').removeClass('hidden')
-
-
-
-
 }
 
 
@@ -253,4 +241,12 @@ function reset (){
 //     var randomNum = Math.floor(Math.random() * )
 // }
 
+// var frontCards = ['images/card1.png','images/card2.png','images/card3.png','images/card4.png','images/card5.png',
+//     'images/card6.png','images/card7.png','images/card8.png','images/card9.png','images/card10.png','images/card11.png',
+//     'images/card12.png','images/card13.png','images/card14.png','images/card15.png','images/card16.png','images/card17.png',
+//     'images/card18.png','images/card19.png','images/card20.png','images/card21.png','images/card22.png','images/card23.png',
+//     'images/card24.png','images/card25.png','images/card26.png','images/card27.png','images/card28.png','images/card29.png',
+//     'images/card31.png','images/card32.png','images/card33.png','images/card34.png','images/card35.png','images/card36.png',
+//     'images/card37.png','images/card38.png','images/card39.png','images/card40.png','images/card41.png','images/card42.png',
+//     'images/card43.png','images/card44.png'];
 
