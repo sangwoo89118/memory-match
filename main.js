@@ -42,8 +42,6 @@ function card_clicked() {
             var secondUrl = $(first_card_clicked).parent().find('.front img').attr('src');
 
             if (firstUrl === secondUrl) {
-
-
                 bouncer = false;
                 match_counter++;
                 matches++;
@@ -165,7 +163,7 @@ function moveCard () {
 
 
 function display_stats () {
-    console.log(games_played);
+
     $('.games-played > .value').text(games_played);
     $('.attempts .value').text(attempts);
     acc();
