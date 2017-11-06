@@ -3,14 +3,36 @@ $(document).ready(initializeApp);
 
 
 function initializeApp(){
-    $('#welcome').modal({backdrop: true});
+    welcomeModal();
+    moveCard();
+
     $('.back').on('click', card_clicked);
+    $('.reset').on('click', reset);
+    $('#music').on('click', musicControl);
+    $('#sfx').on('click', sfxControl);
+
     $('.card').on('dragstart', function(event){
         event.preventDefault();
     });
-    $('.reset').on('click', reset);
-    moveCard();
+
+
+    $('.about').on('click', function(){
+        $('#aboutModal').modal({backdrop: true})
+    })
+
+    themeAudio.loop = true;
+    themeAudio.play();
 }
+
+
+var birthday = new Audio('audio/birthdayyo.mp3');
+var winnerSound = new Audio('audio/winner.mp3');
+var clickSound = new Audio('audio/clickSound.mp3');
+
+var themeAudio = new Audio('audio/theme.mp3');
+
+
+
 
 var first_card_clicked = null;
 var second_card_clicked = null;
@@ -23,12 +45,16 @@ var attempts = 0;
 var accuracy = 0;
 var games_played = 0;
 
-
+function welcomeModal(){
+    $('#welcome').modal({backdrop: true});
+    setTimeout(function(){
+        $('#welcome').modal('hide');
+    }, 1500);
+}
 
 function card_clicked() {
-
     if (bouncer === true) {
-
+        clickSound.play();
         bouncer = false;
         $(this).hide();
         if (first_card_clicked === null) {
@@ -42,6 +68,8 @@ function card_clicked() {
             var secondUrl = $(first_card_clicked).parent().find('.front img').attr('src');
 
             if (firstUrl === secondUrl) {
+
+                winnerSound.play();
                 bouncer = false;
                 match_counter++;
                 matches++;
@@ -50,15 +78,21 @@ function card_clicked() {
                 display_stats();
                 wait1sec();
                 function wait1sec(){
+                    $(first_card_clicked).parent().find('.front').toggleClass('damn');
+                    $(second_card_clicked).parent().find('.front').toggleClass('damn')
+
                     setTimeout(function (){
-                $(first_card_clicked).parent().find('.front').toggleClass('hidden');
-                $(second_card_clicked).parent().find('.front').toggleClass('hidden');
-                first_card_clicked = null;
-                second_card_clicked = null;
-                bouncer = true;
+                        $(first_card_clicked).parent().find('.front').toggleClass('hidden');
+                        $(second_card_clicked).parent().find('.front').toggleClass('hidden');
+                        first_card_clicked = null;
+                        second_card_clicked = null;
+                        bouncer = true;
                     },2000)
                 }
                 if (match_counter === total_possible_matches) {
+
+                    birthday.play();
+                    themeAudio.muted = true;
                     $('#winner').modal({backdrop: true});
                 } else {
                     return;
@@ -81,6 +115,7 @@ function card_clicked() {
     }
     display_stats();
 
+
 }
 
 
@@ -96,6 +131,11 @@ function acc () {
 
 
 function moveCard () {
+    if(themeAudio.muted){
+        themeAudio.muted = false;
+    }
+
+
     var counterF = null;
     var cardArr =[];
     var bouncerN = true;
@@ -111,8 +151,6 @@ function moveCard () {
             bouncerN = false;
         }
     }
-    console.log(cardArr);
-
 
     var counterN = null;
     var elementArr =[];
@@ -170,6 +208,7 @@ function display_stats () {
 }
 
 function reset_stats () {
+    match_counter = 0;
     accuracy = 0;
     matches = 0;
     attempts = 0;
@@ -178,66 +217,40 @@ function reset_stats () {
 }
 
 function reset (){
+    birthday.pause();
     games_played++;
     reset_stats();
     $('.back').show();
     moveCard();
-    $('#game-area .front').removeClass('hidden')
+    $('#game-area .front').removeClass('hidden');
+    $('#game-area .front').removeClass('damn');
 }
 
 
-// for(var i = 1; i < 19; i++){
-//     if($('#game-area :nth-child(' + i + ').front').attr('class') === 'front hidden'){
-//         $('#game-area :nth-child(' + i + ').front').removeClass('hidden');
-//     }
-// }
+function musicControl (){
+    if($('#music').text() === 'Music Off'){
+        themeAudio.muted = true;
+        $('#music').text('Music On')
+    }else if($('#music').text() === 'Music On'){
+        themeAudio.muted = false;
+        $('#music').text('Music Off')
+    }
+}
 
-//
-// for(var w = 0; w < 12 ; w++) {
-//
-//     setTimeout(function () {
-//         $('#game-area .back').toggleClass('flip');
-//     }, 500);
-//     w;
-// }
+function sfxControl () {
+    if($('#sfx').text() === 'SFX Off'){
+        birthday.muted = true;
+        winnerSound.muted = true;
+        clickSound.muted = true;
+        $('#sfx').text('SFX On');
+    }else if($('#sfx').text()=== 'SFX On'){
+        birthday.muted = false;
+        winnerSound.muted = false;
+        clickSound.muted = false;
+        $('#sfx').text('SFX Off')
+    }
+}
 
-//
-// for(var k = 0; k < 8; k++) {
-//     var randomNum = Math.floor(Math.random() * 18)+1;
-//     var randomNum2 = Math.floor(Math.random() * 18)+1;
-//     var randomNum3 = Math.floor(Math.random() * 18)+1;
-//
-//     var a =[];
-//     var b =[];
-//     var c =[];
-//
-//
-//     if(a.indexOf(randomNum) === -1 && b.indexOf(randomNum2) === -1 && c.indexOf(randomNum3) === -1) {
-//         a.push(randomNum);
-//         b.push(randomNum2);
-//         c.push(randomNum3);
-//     }
-// }console.log('a:' + a + 'b: '+ b + "c: "+ c);
-
-
-
-//            $('#game-area :nth-child(' + randomNum2 + ') .front img').attr('src', frontCards[randomNum]);
-//$('#game-area :nth-child(' + randomNum3 + ') .front img').attr('src', frontCards[randomNum])
-
-
-//$('#game-area :nth-child(1) .front img').attr('src', 'images/card9.png')
-//$('.row-1 :nth-child(1) .front img').attr('src','images/card9.png');
-//var element = $('#game-area .card .front img')
-// var element = $('#game-area .card .front')
-
-
-
-//
-//
-//
-//
-//     var randomNum = Math.floor(Math.random() * )
-// }
 
 // var frontCards = ['images/card1.png','images/card2.png','images/card3.png','images/card4.png','images/card5.png',
 //     'images/card6.png','images/card7.png','images/card8.png','images/card9.png','images/card10.png','images/card11.png',

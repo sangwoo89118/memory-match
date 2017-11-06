@@ -18,28 +18,50 @@ body{
             1px 1px 0 #000;
 }
 
-
-
-ul, li, a{
-    display: inline-block;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    color: white;
-    font-size: 3vmin;
-    text-shadow: 2px 2px 100px #21f800;
-    -webkit-text-stroke: 1px black;
-    color: white;
-
+.dropdown-list{
+    cursor: pointer;
 }
 
-ul li a:hover {
+ul, li, a{
     color: white;
-    text-decoration: none;
+    font-size: 3vmin;
+    -webkit-text-stroke: 1px black;
+}
+
+
+
+.nav > li > a:hover{
+    background-color: transparent;
+    color: inherit;
+}
+
+a:visited{
+    color: inherit;
+    background-color: transparent;
+}
+
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+    background-color: transparent;
+}
+
+
+
+.navbar-nav .open .dropdown-menu {
+    position: static;
+    float: none;
+    width: auto;
+    margin-top: 0;
+    background-color: transparent;
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
 }
 
 h1{
     font-size: 8vmin;
+    margin: 0 auto;
+    font-weight:700;
+
 }
 
 .card{
@@ -56,6 +78,12 @@ h1{
     to {transform: rotate(360deg)}
 }
 
+.damn{
+    transition-duration:1s;
+    animation: spin 2s linear;
+    animation-iteration-count: 1;
+}
+
 
 .front, .back{
     position: absolute;
@@ -66,7 +94,7 @@ h1{
 }
 
 .stats{
-    /*border: 1px solid black;*/
+
     width: 20vw;
     height: 70vh;
     float: left;
@@ -77,12 +105,11 @@ h1{
 .game{
     width: 70vw;
     height: 70vh;
-    /*border: 1px solid red;*/
     float: right;
 }
 
 .navbar{
-    /*border: 1px solid blue;*/
+
     width: 100vw;
     height: 20vh;
     clear: both;
@@ -111,12 +138,6 @@ h1{
     box-shadow: none;
     border: none;
 }
-
-
-/*.modal-body{*/
-    /*padding: 0;*/
-/*}*/
-
 .modal-body img{
     height: 70vh;
 }
@@ -143,17 +164,21 @@ h1{
     visibility: hidden;
 }
 
-
 *{
     user-select: none;
 }
 
 
+.designer_img img{
+    height: auto;
+}
 
 
+.aboutInfo > a, .aboutInfo > h3{
+    font-size: 3vmin;
+    text-decoration: none;
 
-
-
+}
 
 
 

@@ -19,18 +19,25 @@
 
 </head>
 <body>
-        <nav class="navbar">
+        <nav class="navbar navbar-nav">
             <div class='col-md-4 col-xs-2 text-center' id="logo">
                 <img src="images/logo.png" alt="Clash of Royale">
             </div>
-            <div class="col-md-5 col-xs-8 text-center">
+            <div class="col-md-5 col-xs-6 text-center">
                 <h1>Memory Match</h1>
             </div>
-            <div class="col-md-3 col-xs-2 text-center links">
-                <ul>
-                    <li><a href="#">Setting</a></li>
-                    <li><a href="about.html">Description</a></li>
-                </ul>
+            <div class="col-md-3 col-xs-4 text-center links">
+                    <ul class="nav navbar-nav navbar-right ">
+                        <li class="active about"><a href="#">About</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Settings <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li class='dropdown-list' id="music">Music Off</li>
+                                <li class='dropdown-list' id="sfx">SFX Off</li>
+                            </ul>
+                        </li>
+                    </ul>
+
             </div>
         </nav>
 
@@ -225,11 +232,8 @@
             <div class="modal fade" id="welcome" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal"> CLOSE </button>
-                        </div>
                         <div class="modal-body text-center">
-                            <img src="images/welcome.png" alt="">
+                            <img id='picture' src="images/welcome.png" >
                             <h1>WELCOME</h1>
                         </div>
                     </div>
@@ -238,8 +242,41 @@
         </div>
 
 
+        <div class="modal fade" id="aboutModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+                        <h1 class="modal-title">Sangwoo Kim</h1>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-6 designer_img">
+                                <img src="images/family.jpg" class="img-responsive">
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-6 aboutInfo">
+                                <a href="#">Sangwoo's portfolio</a>
 
+                                <h3>Description</h3>
 
+                                <p>This match game is based on mobile game, Clash of Royale</p>
+                                <p>Test your memory by matching pairs of cards from Clash of Royale characters.</p>
+
+                                <h3>Skills</h3>
+                                <ul>
+                                    <li>HTML</li>
+                                    <li>CSS</li>
+                                    <li>Javascript</li>
+                                    <li>Jquery</li>
+                                    <li>Bootstrap</li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 </body>
 </html>
