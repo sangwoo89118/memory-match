@@ -29,7 +29,6 @@ ul, li, a{
 }
 
 
-
 .nav > li > a:hover{
     background-color: transparent;
     color: inherit;
@@ -78,11 +77,13 @@ h1{
     to {transform: rotate(360deg)}
 }
 
-.damn{
+.spinner{
     transition-duration:1s;
     animation: spin 2s linear;
     animation-iteration-count: 1;
 }
+
+
 
 
 .front, .back{
@@ -125,12 +126,16 @@ h1{
 
 .stats div{
     height: 15vh;
-
 }
 
 .reset{
-    border-radius: 20px;
+    border-radius: 5px;
     background-color: red;
+    border: dashed 5px black;
+}
+
+.reset:active{
+    padding: 10px;
 }
 
 .modal-content{
@@ -140,6 +145,11 @@ h1{
 }
 .modal-body img{
     height: 70vh;
+}
+
+
+.gigphy img{
+    height: 80%;
 }
 
 .close{
@@ -180,5 +190,8 @@ h1{
 
 }
 
+.aboutInfo > a:hover{
+    color: dodgerblue;
+}
 
 
