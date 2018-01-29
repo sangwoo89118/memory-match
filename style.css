@@ -1,9 +1,13 @@
+*{
+    user-select: none;
+}
+
 html{
     box-sizing: border-box;
 }
 
 body{
-    background-image: url('images/groundback.jpg');
+    background-image: url('images/backGroundImage.jpg');
     -webkit-background-size: cover;
     width: 100vw;
     height: 100vh;
@@ -173,11 +177,6 @@ h1{
 .hidden{
     visibility: hidden;
 }
-
-*{
-    user-select: none;
-}
-
 
 .designer_img img{
     height: auto;

@@ -3,35 +3,33 @@ $(document).ready(initializeApp);
 
 
 function initializeApp(){
+    clickHandler();
     welcomeModal();
     moveCard();
-
-    $('.back').on('click', card_clicked);
-    $('.reset').on('click', reset);
-    $('#music').on('click', musicControl);
-    $('#sfx').on('click', sfxControl);
 
     $('.card').on('dragstart', function(event){
         event.preventDefault();
     });
 
+    themeAudio.loop = true;
+    themeAudio.play();
+}
 
+function clickHandler(){
+    $('.back').on('click', card_clicked);
+    $('.reset').on('click', reset);
+    $('#music').on('click', musicControl);
+    $('#sfx').on('click', sfxControl);
     $('.about').on('click', function(){
         $('#aboutModal').modal({backdrop: true})
     })
-
-    themeAudio.loop = true;
-    themeAudio.play();
 }
 
 
 var birthday = new Audio('audio/birthdayyo.mp3');
 var winnerSound = new Audio('audio/winner.mp3');
 var clickSound = new Audio('audio/clickSound.mp3');
-
 var themeAudio = new Audio('audio/theme.mp3');
-
-
 
 
 var first_card_clicked = null;
@@ -44,6 +42,8 @@ var matches = 0;
 var attempts = 0;
 var accuracy = 0;
 var games_played = 0;
+
+
 
 function welcomeModal(){
     $('#welcome').modal({backdrop: true});
@@ -182,21 +182,20 @@ function moveCard () {
             left: (k-7) + '%',
             top: (-k-7) + '%'
         });
-        setTimeout(function(){
-            $('#game-area .front').toggleClass('spinner');
-            for(var i = 1; i < 19; i++) {
-                $('#game-area :nth-child(' + i + ') .front img').parent().parent().css({
-                    left: 0,
-                    top: 0,
-                })
-            }
-        }, 1500);
-        $('#game-area .front').toggleClass('spinner')
 
+        // put all cards back to their original space
+        setTimeout(function(){
+            $('.card').css({
+                left: 0,
+                top: 0
+            })
+        }, 1500);
+
+        // front card will show up for .5 seconds
         $('#game-area .back').hide();
         setTimeout(function () {
             $('#game-area .back').show();
-        }, 450);
+        }, 500);
     }
 }
 
@@ -221,7 +220,7 @@ function reset (){
     games_played++;
     reset_stats();
 
-    $('.back').show();
+    // $('.back').show();
     moveCard();
     $('#game-area .front').removeClass('hidden');
     $('#game-area .front').removeClass('spinner');
