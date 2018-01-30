@@ -22,6 +22,34 @@ body{
             1px 1px 0 #000;
 }
 
+.navbar{
+    width: 100vw;
+    height: 20vh;
+    clear: both;
+}
+
+.stats{
+    width: 20vw;
+    height: 70vh;
+    float: left;
+    position: relative;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 2%;
+    margin-left: 3%;
+    border-radius: 5%;
+}
+
+.game{
+    width: 70vw;
+    height: 70vh;
+    float: right;
+}
+
+
+
+
+
 .dropdown-list{
     cursor: pointer;
 }
@@ -31,7 +59,6 @@ ul, li, a{
     font-size: 3vmin;
     -webkit-text-stroke: 1px black;
 }
-
 
 .nav > li > a:hover{
     background-color: transparent;
@@ -50,30 +77,39 @@ a:visited{
 
 
 .navbar-nav .open .dropdown-menu {
-    position: static;
-    float: none;
+    /*position: static;*/
+    /*float: none;*/
     width: auto;
-    margin-top: 0;
+    /*margin-top: 0;*/
     background-color: transparent;
     border: 0;
     -webkit-box-shadow: none;
     box-shadow: none;
 }
 
-h1{
-    font-size: 8vmin;
-    margin: 0 auto;
-    font-weight:700;
-
+.navbar-nav > li > a{
+    line-height: 0;
 }
+
+.navbar h1{
+    font-size: 8vmin;
+    font-weight:700;
+}
+
+.stats > div{
+    height: 25%;
+}
+
+
+
+
+
 
 .card{
     position: relative;
     width:16.6%;
     height:33.3%;
     transition-duration: 1s;
-    animation: spin 2s  linear;
-    animation-iteration-count: 1;
 }
 
 @keyframes spin{
@@ -87,6 +123,10 @@ h1{
     animation-iteration-count: 1;
 }
 
+.hidden{
+    visibility: hidden;
+}
+
 
 
 
@@ -95,30 +135,12 @@ h1{
 }
 
 .label, .value, .reset{
-    font-size: 4vmin;
+    font-size: 3.5vmin;
 }
 
-.stats{
 
-    width: 20vw;
-    height: 70vh;
-    float: left;
-    position: relative;
-    color: white;
-}
 
-.game{
-    width: 70vw;
-    height: 70vh;
-    float: right;
-}
 
-.navbar{
-
-    width: 100vw;
-    height: 20vh;
-    clear: both;
-}
 
 .game img {
     width: 17vmin;
@@ -126,11 +148,10 @@ h1{
 
 #logo img{
     width: 35vmin;
+    /*margin-left: 15%;*/
 }
 
-.stats div{
-    height: 15vh;
-}
+
 
 .reset{
     border-radius: 5px;
@@ -147,6 +168,13 @@ h1{
     box-shadow: none;
     border: none;
 }
+
+.aboutModalContent{
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: none;
+    border: none;
+}
+
 .modal-body img{
     height: 70vh;
 }
@@ -170,23 +198,15 @@ h1{
 .modal-header{
     padding:0;
     border: none;
-
 }
 
-
-.hidden{
-    visibility: hidden;
+.modal-header > a > span  {
+    font-size: 35px;
 }
+
 
 .designer_img img{
     height: auto;
-}
-
-
-.aboutInfo > a, .aboutInfo > h3{
-    font-size: 3vmin;
-    text-decoration: none;
-
 }
 
 .aboutInfo > a:hover{

@@ -15,16 +15,6 @@ function initializeApp(){
     themeAudio.play();
 }
 
-function clickHandler(){
-    $('.back').on('click', card_clicked);
-    $('.reset').on('click', reset);
-    $('#music').on('click', musicControl);
-    $('#sfx').on('click', sfxControl);
-    $('.about').on('click', function(){
-        $('#aboutModal').modal({backdrop: true})
-    })
-}
-
 
 var birthday = new Audio('audio/birthdayyo.mp3');
 var winnerSound = new Audio('audio/winner.mp3');
@@ -42,6 +32,19 @@ var matches = 0;
 var attempts = 0;
 var accuracy = 0;
 var games_played = 0;
+
+
+
+
+function clickHandler(){
+    $('.back').on('click', card_clicked);
+    $('.reset').on('click', resetGame);
+    $('#music').on('click', musicControl);
+    $('#sfx').on('click', sfxControl);
+    $('.about').on('click', function(){
+        $('#aboutModal').modal({backdrop: true})
+    })
+}
 
 
 
@@ -74,7 +77,7 @@ function card_clicked() {
                 match_counter++;
                 matches++;
 
-                acc();
+                accuracy();
                 display_stats();
                 wait1sec();
                 function wait1sec(){
@@ -99,7 +102,7 @@ function card_clicked() {
                 }
             } else {
                 wait2sec();
-                acc();
+                accuracy();
 
                 function wait2sec() {
                     setTimeout(function () {
@@ -114,12 +117,10 @@ function card_clicked() {
         }
     }
     display_stats();
-
-
 }
 
 
-function acc () {
+function accuracy () {
     accuracy = Math.round((matches / attempts)*100);
     var percentage = accuracy + '%';
     if(!isNaN(accuracy)) {
@@ -134,53 +135,44 @@ function moveCard () {
     if(themeAudio.muted){
         themeAudio.muted = false;
     }
-
-    var counterF = null;
-    var cardArr =[];
-    var bouncerN = true;
-    while(bouncerN){
-        if(counterF < 9){
-
-            var randomNum = Math.floor(Math.random() * 44)+1;
-            if(cardArr.indexOf(randomNum) === -1){
-                counterF++;
-                cardArr.push(randomNum);
-            }
-        }else{
-            bouncerN = false;
+    //store random numbers between 1 - 44 into cardRandums array
+    var cardCounter = null;
+    var cardRandNums =[];
+    while(cardCounter < 9){
+        var randNum = Math.floor(Math.random() * 44)+1;
+        if(cardRandNums.indexOf(randNum) === -1){
+            cardCounter++;
+            cardRandNums.push(randNum);
+        }
+    }
+    //store random numbers between 1 - 18 into elementRandNums array
+    var elementCounter = null;
+    var elementRandNums =[];
+    while(elementCounter < 18){
+        var randNum = Math.floor(Math.random() * 18)+1;
+        if(elementRandNums.indexOf(randNum) === -1){
+            elementCounter++;
+            elementRandNums.push(randNum);
         }
     }
 
-    var counterN = null;
-    var elementArr =[];
-    var bouncer2 = true;
-    while(bouncer2){
-        if(counterN < 18){
-            var randomNum2 = Math.floor(Math.random() * 18)+1;
-            if(elementArr.indexOf(randomNum2) === -1){
-                counterN++;
-                elementArr.push(randomNum2);
-            }
-        }else{
-            bouncer2 = false;
-        }
-    }
+    for(var i = 0, k =0; i <cardRandNums.length , k < elementRandNums.length; i++, k+=2){
 
+        var $element1 = $(`#game-area :nth-child(${elementRandNums[k]}) .front img`);
+        var $element2 = $(`#game-area :nth-child(${elementRandNums[k +1]}) .front img`)
 
+        //put cards into elements
+        $element1.attr('src', `images/card${cardRandNums[i]}.png`);
+        $element2.attr('src', `images/card${cardRandNums[i]}.png`);
 
-
-    for(var i = 0, k =0; i <cardArr.length , k < elementArr.length; i++, k+=2){
-
-        $('#game-area :nth-child(' + elementArr[k] + ') .front img').attr('src', 'images/card'+cardArr[i]+'.png');
-        $('#game-area :nth-child(' + elementArr[k+1] + ') .front img').attr('src', 'images/card'+cardArr[i]+'.png');
-
-        $('#game-area :nth-child(' + elementArr[k] + ') .front img').parent().parent().css({
-            left: (-k-7) + '%',
-            top: (k-7) + '%'
+        // move card around based randomly
+        $element1.closest('.card').css({
+            left: (-k-5) + '%',
+            top: (k-5) + '%'
         });
-        $('#game-area :nth-child(' + elementArr[k+1] + ') .front img').parent().parent().css({
-            left: (k-7) + '%',
-            top: (-k-7) + '%'
+        $element2.closest('.card').css({
+            left: (k-5) + '%',
+            top: (-k-5) + '%'
         });
 
         // put all cards back to their original space
@@ -191,10 +183,12 @@ function moveCard () {
             })
         }, 1500);
 
-        // front card will show up for .5 seconds
+        // front card will show for .5 seconds and spins
         $('#game-area .back').hide();
+        $('.card').addClass('spinner');
         setTimeout(function () {
             $('#game-area .back').show();
+
         }, 500);
     }
 }
@@ -203,29 +197,12 @@ function moveCard () {
 function display_stats () {
     $('.games-played > .value').text(games_played);
     $('.attempts .value').text(attempts);
-    acc();
+    accuracy();
 }
 
-function reset_stats () {
-    match_counter = 0;
-    accuracy = 0;
-    matches = 0;
-    attempts = 0;
-    $('.accuracy .value').text('');
-    display_stats();
-}
 
-function reset (){
-    birthday.pause();
-    games_played++;
-    reset_stats();
 
-    // $('.back').show();
-    moveCard();
-    $('#game-area .front').removeClass('hidden');
-    $('#game-area .front').removeClass('spinner');
 
-}
 
 
 function musicControl (){
@@ -251,3 +228,29 @@ function sfxControl () {
         $('#sfx').text('SFX Off')
     }
 }
+
+
+function resetGame (){
+    birthday.pause();
+    games_played++;
+    reset_stats();
+
+    $('.card').removeClass('spinner');
+    $('.front').removeClass('hidden');
+    $('.front').removeClass('spinner');
+
+    moveCard();
+}
+
+function reset_stats () {
+    match_counter = 0;
+    accuracy = 0;
+    matches = 0;
+    attempts = 0;
+    $('.accuracy .value').text('');
+    display_stats();
+}
+
+
+
+
