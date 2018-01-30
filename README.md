@@ -10,3 +10,10 @@ accuracy of their choices.
 
 ![memorymatch](https://user-images.githubusercontent.com/31301769/35555664-c27bd53a-0554-11e8-947c-04eb8603fc99.jpg)
 
+## Skills
+
+1.HTML 5
+1.CSS 3
+1.JavaScript
+1.jQuery
+1.Bootstrap
