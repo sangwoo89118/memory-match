@@ -77,7 +77,7 @@ function card_clicked() {
                 match_counter++;
                 matches++;
 
-                accuracy();
+                acc();
                 display_stats();
                 wait1sec();
                 function wait1sec(){
@@ -102,7 +102,7 @@ function card_clicked() {
                 }
             } else {
                 wait2sec();
-                accuracy();
+                acc();
 
                 function wait2sec() {
                     setTimeout(function () {
@@ -120,7 +120,7 @@ function card_clicked() {
 }
 
 
-function accuracy () {
+function acc () {
     accuracy = Math.round((matches / attempts)*100);
     var percentage = accuracy + '%';
     if(!isNaN(accuracy)) {
@@ -197,7 +197,7 @@ function moveCard () {
 function display_stats () {
     $('.games-played > .value').text(games_played);
     $('.attempts .value').text(attempts);
-    accuracy();
+    acc();
 }
 
 
