@@ -10,6 +10,7 @@ function initializeApp(){
     $('.card').on('dragstart', function(event){
         event.preventDefault();
     });
+    $('#winner').on('hidden.bs.modal', resetGame);
 
     gameData.themeAudio.loop = true;
     gameData.themeAudio.play();
@@ -43,7 +44,7 @@ function clickHandler(){
     $('#sfx').on('click', sfxControl);
     $('.about').on('click', function(){
         $('#aboutModal').modal({backdrop: true})
-    })
+    });
 }
 
 
@@ -101,7 +102,6 @@ function moveCard () {
     }
     // put all cards back to their original space
     setTimeout(function(){
-        console.log('hello world');
         $('.card').css({
             left: 0,
             top: 0
@@ -113,7 +113,6 @@ function moveCard () {
     $('#game-area .back').hide();
     $('.card').addClass('spinner');
     setTimeout(function () {
-        console.log('world hello');
         $('#game-area .back').show();
 
     }, 500);
@@ -122,6 +121,30 @@ function moveCard () {
 }
 
 function card_clicked() {
+    function wait1sec(){
+        $(gameData.first_card_clicked).parent().find('.front').toggleClass('spinner');
+        $(gameData.second_card_clicked).parent().find('.front').toggleClass('spinner')
+
+        setTimeout(function (){
+            $(gameData.first_card_clicked).parent().find('.front').toggleClass('hidden');
+            $(gameData.second_card_clicked).parent().find('.front').toggleClass('hidden');
+            gameData.first_card_clicked = null;
+            gameData.second_card_clicked = null;
+            gameData.bouncer = true;
+        },2000)
+    }
+
+    function wait2sec() {
+        setTimeout(function () {
+            $(gameData.first_card_clicked).show();
+            $(gameData.second_card_clicked).show();
+            gameData.first_card_clicked = null;
+            gameData.second_card_clicked = null;
+            gameData.bouncer = true;
+        }, 1000);
+    }
+
+
     if (gameData.bouncer === true) {
         console.log('clicks before wow????');
         gameData.clickSound.play();
@@ -142,28 +165,15 @@ function card_clicked() {
             var secondUrl = $(gameData.first_card_clicked).parent().find('.front img').attr('src');
 
             if (firstUrl === secondUrl) {
-                console.log('hello double!!');
                 gameData.winnerSound.play();
                 gameData.bouncer = false;
                 gameData.match_counter++;
                 gameData.matches++;
 
-
                 acc();
                 display_stats();
                 wait1sec();
-                function wait1sec(){
-                    $(gameData.first_card_clicked).parent().find('.front').toggleClass('spinner');
-                    $(gameData.second_card_clicked).parent().find('.front').toggleClass('spinner')
 
-                    setTimeout(function (){
-                        $(gameData.first_card_clicked).parent().find('.front').toggleClass('hidden');
-                        $(gameData.second_card_clicked).parent().find('.front').toggleClass('hidden');
-                        gameData.first_card_clicked = null;
-                        gameData.second_card_clicked = null;
-                        gameData.bouncer = true;
-                    },2000)
-                }
                 if (gameData.match_counter === gameData.total_possible_matches) {
 
                     gameData.birthday.play();
@@ -175,16 +185,6 @@ function card_clicked() {
             } else {
                 wait2sec();
                 acc();
-
-                function wait2sec() {
-                    setTimeout(function () {
-                        $(gameData.first_card_clicked).show();
-                        $(gameData.second_card_clicked).show();
-                        gameData.first_card_clicked = null;
-                        gameData.second_card_clicked = null;
-                        gameData.bouncer = true;
-                    }, 1000);
-                }
             }
         }
     }
