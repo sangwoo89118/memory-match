@@ -247,7 +247,7 @@ function reset_stats () {
     gameData.accuracy = 0;
     gameData.matches = 0;
     gameData.attempts = 0;
-    $('.accuracy .value').text('');
+    $('.accuracy .value').text('N/A');
     display_stats();
 }
 

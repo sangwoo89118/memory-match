@@ -1,15 +1,5 @@
 /***** Media Query *****/
 
-@media (max-width: 630px){
-    .screenSizeMessage{
-        display: block !important;
-        color: white;
-        margin-top: 35%;
-    }
-    body > .navbar, body > .stats, body > .game {
-        visibility: hidden;
-    }
-}
 
 
 .screenSizeMessage{
@@ -95,10 +85,7 @@ a:visited{
 }
 
 .navbar-nav .open .dropdown-menu {
-    /*position: static;*/
-    /*float: none;*/
     width: auto;
-    /*margin-top: 0;*/
     background-color: transparent;
     border: 0;
     -webkit-box-shadow: none;
@@ -116,7 +103,6 @@ a:visited{
 
 #logo img{
     width: 35vmin;
-    /*margin-left: 15%;*/
 }
 
 /***** Stats *****/
@@ -136,9 +122,6 @@ a:visited{
     border: dashed 5px black;
 }
 
-/*.reset:active{
-    padding: 10px;
-}*/
 
 
 /***** game board *****/
@@ -174,8 +157,6 @@ a:visited{
 }
 
 
-
-
 /***** Modals *****/
 
 .modal-content{
@@ -185,7 +166,7 @@ a:visited{
 }
 
 .aboutModalContent{
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.8);
     box-shadow: none;
     border: none;
 }
@@ -194,6 +175,9 @@ a:visited{
     height: 70vh;
 }
 
+.gigphy {
+    height: 70vh;
+}
 
 .gigphy img{
     height: 80%;
@@ -208,6 +192,7 @@ a:visited{
 
 .close:hover{
     color: mediumvioletred;
+    opacity: 1;
 }
 
 .modal-header{
@@ -227,5 +212,67 @@ a:visited{
 .aboutInfo > a:hover{
     color: dodgerblue;
 }
+
+.winnerModalContent, .aboutModalContent{
+    margin-top: 15vmin;
+}
+
+
+@media only screen and (max-width: 420px){
+    .screenSizeMessage{
+        display: block !important;
+        color: white;
+        top: 35%;
+        position: relative;
+    }
+    body > .navbar, body > .stats, body > .game, .container {
+        visibility: hidden;
+    }
+}
+
+@media only screen and (min-width: 850px) and (max-width:950px){
+    .stats {
+        height: 10vh;
+        width: 95vw;
+    }
+    .stats > div{
+        display: inline-block;
+    }
+    .label, .value, .reset{
+        font-size: 2.5vmin;
+    }
+    .game{
+        width: 100vw;
+        height: 70vh;
+        float: right;
+    }
+}
+
+@media only screen and (min-width: 421px) and (max-width:849px) and (min-height: 500px) {
+    .stats {
+        height: 10vh;
+        width: 95vw;
+    }
+    .stats > div{
+        display: inline-block;
+    }
+    .label, .value, .reset{
+        font-size: 2.5vmin;
+    }
+    .game{
+        width: 100vw;
+        height: 70vh;
+        float: right;
+    }
+    .dropdown{
+        width: 100%;
+    }
+}
+
+
+
+
+
+
 
 
