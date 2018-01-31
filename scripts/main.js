@@ -26,7 +26,7 @@ var gameData = {
     second_card_clicked : null,
     total_possible_matches : 9,
     match_counter : 0,
-    bouncer : true,
+    bouncer : false,
 
     matches : 0,
     attempts : 0,
@@ -111,7 +111,7 @@ function moveCard () {
         $('.card').addClass('spinner');
         setTimeout(function () {
             $('#game-area .back').show();
-
+            gameData.bouncer = true;
         }, 500);
     }
 }
@@ -119,10 +119,13 @@ function moveCard () {
 function card_clicked() {
     if (gameData.bouncer === true) {
         gameData.clickSound.play();
+        if($(this).hasClass('cardClicked')) return;
         gameData.bouncer = false;
         $(this).hide();
         if (gameData.first_card_clicked === null) {
             gameData.first_card_clicked = this;
+            $(gameData.first_card_clicked).addClass('cardClicked');
+
             gameData.bouncer = true;
         } else {
             gameData.second_card_clicked = this;
@@ -132,7 +135,7 @@ function card_clicked() {
             var secondUrl = $(gameData.first_card_clicked).parent().find('.front img').attr('src');
 
             if (firstUrl === secondUrl) {
-
+                console.log('hello double!!');
                 gameData.winnerSound.play();
                 gameData.bouncer = false;
                 gameData.match_counter++;
@@ -164,7 +167,7 @@ function card_clicked() {
             } else {
                 wait2sec();
                 acc();
-
+                 $(gameData.first_card_clicked).removeClass('cardClicked');
                 function wait2sec() {
                     setTimeout(function () {
                         $(gameData.first_card_clicked).show();
