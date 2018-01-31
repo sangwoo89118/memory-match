@@ -79,8 +79,9 @@ function moveCard () {
         }
     }
 
-    for(var i = 0, k =0; i <cardRandNums.length , k < elementRandNums.length; i++, k+=2){
+    for(var i = 0; i <cardRandNums.length; i++){
 
+        var k = i * 2;
         var $element1 = $(`#game-area :nth-child(${elementRandNums[k]}) .front img`);
         var $element2 = $(`#game-area :nth-child(${elementRandNums[k +1]}) .front img`)
 
@@ -97,40 +98,46 @@ function moveCard () {
             left: (k-5) + '%',
             top: (-k-5) + '%'
         });
-
-        // put all cards back to their original space
-        setTimeout(function(){
-            $('.card').css({
-                left: 0,
-                top: 0
-            })
-        }, 1500);
-
-        // front card will show for .5 seconds and spins
-        $('#game-area .back').hide();
-        $('.card').addClass('spinner');
-        setTimeout(function () {
-            $('#game-area .back').show();
-            gameData.bouncer = true;
-        }, 500);
     }
+    // put all cards back to their original space
+    setTimeout(function(){
+        console.log('hello world');
+        $('.card').css({
+            left: 0,
+            top: 0
+        })
+        gameData.bouncer = true;
+    }, 1500);
+
+    // front card will show for .5 seconds and spins
+    $('#game-area .back').hide();
+    $('.card').addClass('spinner');
+    setTimeout(function () {
+        console.log('world hello');
+        $('#game-area .back').show();
+
+    }, 500);
+
+
 }
 
 function card_clicked() {
     if (gameData.bouncer === true) {
+        console.log('clicks before wow????');
         gameData.clickSound.play();
-        if($(this).hasClass('cardClicked')) return;
+
         gameData.bouncer = false;
-        $(this).hide();
         if (gameData.first_card_clicked === null) {
+
             gameData.first_card_clicked = this;
-            $(gameData.first_card_clicked).addClass('cardClicked');
+            $(gameData.first_card_clicked).hide();
 
             gameData.bouncer = true;
         } else {
-            gameData.second_card_clicked = this;
-            gameData.attempts++;
 
+            gameData.second_card_clicked = this;
+            $(gameData.second_card_clicked).hide();
+            gameData.attempts++;
             var firstUrl = $(this).parent().find('.front img').attr('src');
             var secondUrl = $(gameData.first_card_clicked).parent().find('.front img').attr('src');
 
@@ -140,6 +147,7 @@ function card_clicked() {
                 gameData.bouncer = false;
                 gameData.match_counter++;
                 gameData.matches++;
+
 
                 acc();
                 display_stats();
@@ -167,7 +175,7 @@ function card_clicked() {
             } else {
                 wait2sec();
                 acc();
-                 $(gameData.first_card_clicked).removeClass('cardClicked');
+
                 function wait2sec() {
                     setTimeout(function () {
                         $(gameData.first_card_clicked).show();
@@ -187,7 +195,7 @@ function resetGame (){
     gameData.birthday.pause();
     gameData.games_played++;
     reset_stats();
-
+    gameData.bouncer = false;
     $('.card').removeClass('spinner');
     $('.front').removeClass('hidden');
     $('.front').removeClass('spinner');
