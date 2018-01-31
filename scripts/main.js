@@ -106,7 +106,6 @@ function moveCard () {
             left: 0,
             top: 0
         })
-        gameData.bouncer = true;
     }, 1500);
 
     // front card will show for .5 seconds and spins
@@ -116,6 +115,10 @@ function moveCard () {
         $('#game-area .back').show();
 
     }, 500);
+
+    setTimeout(function(){
+        gameData.bouncer = true;
+    }, 2000)
 
 
 }
@@ -146,7 +149,6 @@ function card_clicked() {
 
 
     if (gameData.bouncer === true) {
-        console.log('clicks before wow????');
         gameData.clickSound.play();
 
         gameData.bouncer = false;
