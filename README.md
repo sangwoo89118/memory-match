@@ -12,7 +12,7 @@ accuracy of their choices.
 
 ## Skills
 
-> ## HTML5  /  CSS3  /  JavaScript  /  jQuery  /  Bootstrap
+> HTML5  /  CSS3  /  JavaScript  /  jQuery  /  Bootstrap
 
 ### Click [HERE](https://sangwoo.me) for Porfolio
 
